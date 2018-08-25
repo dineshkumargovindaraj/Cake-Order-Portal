@@ -1,0 +1,113 @@
+﻿@model CakeOrderPortal.Models.MultipleView
+
+@{
+    ViewBag.Title = "Payment";
+    //ViewBag.OrderId = Model.OrderId;
+    var multipleView = Model;
+
+}
+<link href="~/Content/PageStyles.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="section11">
+            <h4 style="font-size:20px;margin-top:50px;text-decoration:underline; color:brown">Biller Information</h4>
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <h4 style="font-size:20px;margin-top:100px; text-decoration:underline; color:brown">Payment Details</h4>&#9
+                <img style="width:300px;height:50px;" src="/Images/payment.jpg" />
+            </div>
+            <div class="form-group" style="margin-top:30px;">
+                @Html.LabelFor(model => model.CreditCardType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-top:5px;">
+                    @Html.RadioButtonFor(model => model.CreditCardType, "Master Card", new { htmlAttributes = new { @class = "form-control" } }) Master Card
+                    @Html.RadioButtonFor(model => model.CreditCardType, "Visa", new { htmlAttributes = new { @class = "form-control" } }) Visa
+                    @Html.RadioButtonFor(model => model.CreditCardType, "American Express", new { htmlAttributes = new { @class = "form-control" } })American Express
+                    @Html.ValidationMessageFor(model => model.CreditCardType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreditCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExpirationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ExpirationDate, new { htmlAttributes = new { @class = "datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ExpirationDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input style=" background-color: #ff1a1a;color: #FFFFFF;" type="submit" value="Checkout" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section21">
+        @Html.Action("Details", new { multipleView })
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "MM yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2016:2031",
+                showOn: "both",
+                buttonText: "<i class = 'fa fa-calendar'></i>",
+                onClose: function (dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, month, 1));
+                }
+            });
+        });
+
+    </script>
+
+}

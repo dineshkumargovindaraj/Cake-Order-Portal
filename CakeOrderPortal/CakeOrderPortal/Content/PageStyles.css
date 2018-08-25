@@ -1,0 +1,130 @@
+﻿#home {
+    background: url(/Images/cakebg.jpg) no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+#order {
+    background: url(/Images/cakebgorder.png) no-repeat center center fixed;
+    background-size: cover;
+    position:center;
+    padding: 0;
+}
+
+.buttonProceed {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff1a1a;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 8px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff1a1a;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+header {
+    height: 75px;
+    color: #ff1a1a;
+    text-align: center;
+    font-size: 56px;
+    padding: 10px;
+    clear: left;
+}
+
+
+footer {
+    color: white;
+    text-decoration: solid;
+    text-align: center;
+    height: 25px;
+    padding: 1em;
+    clear: left;
+}
+
+
+
+div.container {
+    width: 100%;
+   
+}
+
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+article {
+    margin-top: 400px;
+    margin-left: 400px;
+    padding: 4em;
+    overflow: hidden;
+}
+
+.section1 {
+    width: 49%;
+    float: left;
+    height: 85vh;
+    margin: 0;
+    padding: 0;
+}
+
+.section2 {
+    width: 49%;
+    float: right;
+    height: 85vh;
+    margin: 0;
+}
+
+.ui-datepicker-calendar{
+    display:none;
+}

@@ -1,0 +1,187 @@
+﻿@model CakeOrderPortal.Models.CakeOrderDetail
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/PageStyles.css">
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="order">
+        <br />
+        <h1 style="color:#261970;margin-left:30px;">ItZ Now or Never. Make some sweet memories !</h1>
+        <br />
+
+        <div>
+            <span>
+                <img src="~/Images/cake1.png" style="width:270px;height:270px;margin-left:30px;">
+            </span>
+            <span>
+                <img src="~/Images/cake2.png" style="width:270px;height:270px;">
+            </span>
+            <span>
+                <img src="~/Images/cake3.png" style="width:270px;height:270px;">
+            </span>
+            <span>
+                <img src="~/Images/cake4.jpg" style="width:270px;height:270px;">
+            </span>
+        </div>
+
+
+        <br />
+
+        <div class="form-horizontal">
+            <div class="col-sm-9">
+
+                <div>
+                    <form action="Buy">
+
+                        <tag-name style="white-space:pre; color:#261970;font-weight:bold">
+
+                            @Html.RadioButtonFor(model => model.CakeName, "Red Velvet Fresh Cream Cake", new { htmlAttributes = new { @class = "form-control" } }) Buy Now &#9;&#9; &#9;&#9; &#9;&#9;&nbsp;&nbsp;&nbsp;@Html.RadioButtonFor(model => model.CakeName, "Rich Fruit Cake", new { htmlAttributes = new { @class = "form-control" } }) Buy Now &#9;&#9;&#9; &#9;&#9; &#9;&#9;&nbsp;&nbsp;&nbsp;@Html.RadioButtonFor(model => model.CakeName, "Black Forest Gateau", new { htmlAttributes = new { @class = "form-control" } }) Buy Now  &#9;&#9; &#9;&#9;&nbsp;&nbsp;&#9;&#9;@Html.RadioButtonFor(model => model.CakeName, "Luscious Oreo Cake", new { htmlAttributes = new { @class = "form-control" } }) Buy Now
+                            @Html.ValidationMessageFor(model => model.CakeName, "", new { @class = "text-danger" })
+
+                        </tag-name><br>
+                    </form>
+
+                </div>
+            </div>
+        </div><br>
+
+        <div class="section1">
+
+            <br /><br /><h3 style="color:#261970;"><u>Customize your cake</u></h3>
+            <div class="form-horizontal">
+
+                <br /><h5><b><i>Weight:</i></b></h5>
+                <div class="col-sm-9">
+                    @Html.RadioButtonFor(model => model.Weight, "1 KG", new { htmlAttributes = new { @class = "form-control" } }) 1 KG
+                    @Html.RadioButtonFor(model => model.Weight, "1.5 KG", new { htmlAttributes = new { @class = "form-control" } }) 1.5 KG
+                    @Html.RadioButtonFor(model => model.Weight, "2 KG", new { htmlAttributes = new { @class = "form-control" } }) 2 KG
+                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                </div>
+
+                <br />
+
+
+                <br /><h5><b><i>Type:</i></b></h5>
+                <div class="col-sm-9">
+                    @Html.RadioButtonFor(model => model.CakeType, "EGG", new { htmlAttributes = new { @class = "form-control" } }) EGG
+                    @Html.RadioButtonFor(model => model.CakeType, "EGGLESS", new { htmlAttributes = new { @class = "form-control" } }) EGGLESS
+                    @Html.ValidationMessageFor(model => model.CakeType, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <br /><br /><h3 style="color:#261970;"><u>Delivery Date and Time</u></h3>
+                <div>
+                    <br /><h5><b><i>Pick delivery date:</i></b></h5>
+                    <div>
+                        @Html.TextBoxFor(model => model.DeliveryDate, new {@Value = Model.DeliveryDate.ToString("yyyy-MM-dd"), @type = "date" , @class = "datepicker", @min = (DateTime.Today.ToString("yyyy-MM-dd"))})
+                        @Html.ValidationMessageFor(model => model.DeliveryDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <br /><h5><b><i>Pick delivery time:</i></b></h5>
+                    <div>
+                        @Html.TextBox("DeliveryTime", Model.DeliveryTime, new { @class = "timepicker", @type = "time" })
+                        @Html.ValidationMessageFor(model => model.DeliveryTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section2">
+            <br /><br /><h3 style="color:#261970;"><u>Delivery Address</u></h3>
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StreetNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StreetNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StreetNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Country,
+                                                     new SelectList(Model.countries, "Value", "Text"),
+                                                     new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="buttonProceed" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

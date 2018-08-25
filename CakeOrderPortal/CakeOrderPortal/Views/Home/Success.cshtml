@@ -1,0 +1,26 @@
+﻿@model CakeOrderPortal.Models.PaymentInformation
+
+@{
+    ViewBag.Title = "Succcess";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-sm-6 col-sm-offset-3">
+            <br><br> <h1 style="color:green">Success!!!</h1>
+            <img style="align-content:center; width:200px; height:200px;" src="~/Images/success.jpg">
+            <br />
+            <div>
+                <h3> Dear, </h3>
+                <h3 style="color:red">
+                    @Html.DisplayFor(model => model.Name)
+                </h3>
+            </div>
+            <p style="font-size:20px;color:green;">
+                Your order has been successfully placed !!!<br /> Wish you Sweet Memory With Yummy Cake ...
+            </p>
+            <br><br>
+        </div>
+
+    </div>
+</div>
